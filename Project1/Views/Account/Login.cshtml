@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="utf-8" />
+
+    <!-- CSS -->
+    <link href="~/css/Login.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Login</h2>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Enter Email" />
+            <small class="error-msg" id="emailError"></small>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Enter Password" />
+            <small class="error-msg" id="passwordError"></small>
+        </div>
+
+        <button id="btnLogin">Login</button>
+
+        <div class="register-link">
+            Don't have an account? <a href="/Account/Register">Register here</a>
+        </div>
+    </div>
+
+    <!-- ONLY script reference -->
+    <script src="~/Scripts/login.js"></script>
+
+</body>
+</html>

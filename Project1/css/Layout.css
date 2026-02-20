@@ -1,0 +1,68 @@
+﻿/* Simple Layout CSS */
+body {
+    padding-top: 56px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #ff6b35 !important;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #ff6b35 !important;
+}
+
+.nav-link i {
+    margin-right: 6px;
+}
+
+/* User info styling */
+#userInfo .navbar-text {
+    color: #333;
+}
+
+#userName {
+    color: #ff6b35;
+    font-weight: 600;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #ff6b35;
+    border-color: #ff6b35;
+}
+
+.btn-primary:hover {
+    background-color: #e55a2b;
+    border-color: #e55a2b;
+}
+
+.btn-outline-primary {
+    color: #ff6b35;
+    border-color: #ff6b35;
+}
+
+.btn-outline-primary:hover {
+    background-color: #ff6b35;
+    border-color: #ff6b35;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Footer */
+footer {
+    background: #2c3e50;
+}

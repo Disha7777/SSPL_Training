@@ -1,0 +1,131 @@
+﻿@model List<Project1.Models.Food>
+@{
+    ViewBag.Title = "Food Menu";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Menu</title>
+    <meta charset="utf-8" />
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
+          <link href="~/css/Home.css" rel="stylesheet" />
+
+   
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    @{
+        ViewBag.Title = "Home - Food Ordering";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="container mt-4">
+        <!-- Hero Section -->
+        <div class="jumbotron bg-light p-5 rounded">
+            <h1 class="display-4">🍕 Welcome to FoodExpress</h1>
+            <p class="lead">Order delicious food online and get it delivered to your doorstep.</p>
+            <hr class="my-4">
+            <p>Browse our menu and add your favorite items to cart.</p>
+            <a class="btn btn-primary btn-lg" href="#food-section" role="button">Order Now</a>
+        </div>
+
+        <!-- Food Section -->
+        <div id="food-section" class="mb-5">
+            <div class="text-center mb-4">
+                <h2>🍽️ Our Menu</h2>
+                <p class="lead">Choose from our delicious selection</p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <input type="text" id="searchFood" class="form-control" placeholder="Search food items...">
+                </div>
+                <div class="col-md-6 text-end">
+                    <a href="@Url.Action("Cart", "Food")" class="btn btn-primary position-relative">
+                        🛒 View Cart
+                        <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            0
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Food Items Container -->
+            <div id="foodContainer" class="row">
+                <!-- Food items will be loaded here -->
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loadingSpinner" class="text-center my-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="text-primary">🚀 Fast Delivery</h3>
+                        <p>Get your food delivered within 30 minutes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="text-primary">💳 Secure Payment</h3>
+                        <p>100% secure payment options</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h3 class="text-primary">⭐ Quality Food</h3>
+                        <p>Fresh ingredients, delicious taste</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food Item Template (Hidden) -->
+    <div id="foodTemplate" class="col-md-4 mb-4 d-none">
+        <div class="card food-card h-100 shadow-sm">
+            <div class="quantity-badge d-none" id="quantityBadge_${foodId}">1</div>
+            <img src="" class="card-img-top food-image" alt="Food Image" style="height: 200px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title food-name"></h5>
+                <p class="card-text food-description text-muted"></p>
+                <div class="mt-auto">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-primary food-price"></h4>
+                        <span class="badge bg-info fs-6">Per item</span>
+                    </div>
+
+                    <!-- Quantity Controls -->
+                 
+
+                    <!-- Add to Cart Button -->
+                    <button class="btn btn-success add-to-cart-btn w-100" data-id="">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+        <script src="~/Scripts/Home.js"></script>
+    }
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <meta charset="utf-8" />
+
+    <!-- CSS -->
+    <link href="~/css/Register.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+    <div class="register-box">
+        <h2>Create Account</h2>
+
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Enter Name" />
+            <small class="error-msg" id="nameError"></small>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Enter Email" />
+            <small class="error-msg" id="emailError"></small>
+        </div>
+
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Enter Password" />
+            <small class="error-msg" id="passwordError"></small>
+        </div>
+
+        <button id="btnRegister">Register</button>
+
+        <div class="login-link">
+            Already have an account? <a href="/Account/Login">Login here</a>
+        </div>
+    </div>
+
+    <script src="~/Scripts/register.js"></script>
+
+</body>
+</html>

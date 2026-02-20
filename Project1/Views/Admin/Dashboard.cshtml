@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Admin Dashboard - FoodExpress</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/css/Admin.css" />
+
+    <style>
+        /* Inline styles for immediate loading */
+        .content-hidden {
+            display: none;
+        }
+
+        .auth-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ff6b35;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Loading Screen -->
+    <div id="authLoading" class="auth-loading">
+        <div class="spinner"></div>
+        <h3 style="color: #333;">Verifying Admin Access...</h3>
+    </div>
+
+    <!-- Main Admin Dashboard (hidden until auth verified) -->
+    <div id="adminDashboard" class="content-hidden">
+        <!-- NAVBAR -->
+        <nav class="admin-navbar">
+            <div class="brand">
+                <i class="fas fa-bolt"></i>
+                <h1>Food<span>Express</span> Admin</h1>
+            </div>
+
+            <div class="nav-links">
+                <button class="nav-btn home-btn">
+                    <i class="fas fa-home"></i> Home
+                </button>
+                <button class="nav-btn logout" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTAINER -->
+        <div class="admin-container">
+            <!-- SIDEBAR -->
+            <aside class="admin-sidebar">
+                <!-- User Profile -->
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 id="adminName">Loading...</h3>
+                    <p>Administrator</p>
+                </div>
+
+                <!-- Menu -->
+                <div class="sidebar-menu">
+                    <a class="menu-item active" data-target="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Dashboard
+                    </a>
+                    <a class="menu-item" data-target="users">
+                        <i class="fas fa-users"></i>
+                        Users Management
+                    </a>
+                    <a class="menu-item" data-target="foods">
+                        <i class="fas fa-utensils"></i>
+                        Food Products
+                    </a>
+                    <a class="menu-item" data-target="carts">
+                        <i class="fas fa-shopping-cart"></i>
+                        User Carts
+                    </a>
+                    <a class="menu-item" data-target="orders">
+                        <i class="fas fa-box"></i>
+                        Order History
+                    </a>
+                </div>
+            </aside>
+
+            <!-- MAIN CONTENT AREA -->
+            <main class="admin-main">
+                <!-- Dashboard Content -->
+                <div id="dashboardContent" class="dashboard-content">
+                    <!-- HEADER -->
+                    <header class="admin-header">
+                        <h1><i class="fas fa-user-shield"></i> Admin Dashboard</h1>
+                        <span class="admin-subtitle">FoodExpress Control Panel</span>
+                    </header>
+
+                    <!-- STATS -->
+                    <section class="stats">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h3 id="totalUsers">0</h3>
+                            <p>Total Users</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <i class="fas fa-utensils"></i>
+                            <h3 id="totalFoods">0</h3>
+                            <p>Total Food Items</p>
+                        </div>
+
+                        <div class="stat-card">
+                            <i class="fas fa-shopping-cart"></i>
+                            <h3 id="totalCartItems">0</h3>
+                            <p>Total Cart Items</p>
+                        </div>
+                    </section>
+
+                    <!-- USERS PANEL -->
+                    <section class="panel" id="usersPanel">
+                        <h2><i class="fas fa-users"></i> All Users</h2>
+                        <div class="table-container">
+                            <table id="usersTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- FOODS PANEL -->
+                    <section class="panel" id="foodsPanel">
+                        <h2><i class="fas fa-hamburger"></i> Food Products</h2>
+                        <div class="table-container">
+                            <table id="foodsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Food Name</th>
+                                        <th>Price</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- CARTS PANEL -->
+                    <section class="panel" id="cartsPanel">
+                        <h2><i class="fas fa-shopping-cart"></i> User Carts</h2>
+                        <div class="table-container">
+                            <table id="cartTable">
+                                <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Food</th>
+                                        <th>Qty</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- ORDERS PANEL -->
+                    <section class="panel coming-soon" id="ordersPanel">
+                        <i class="fas fa-tools"></i>
+                        <h2><i class="fas fa-box"></i> Order History</h2>
+                        <p>🚧 Order history module coming soon…</p>
+                        <p style="font-size: 14px; margin-top: 10px;">This feature is currently under development</p>
+                    </section>
+                </div>
+            </main>
+
+            <!-- USER DETAILS SIDEBAR -->
+            <aside class="user-details-panel" id="userDetailsPanel">
+                <div class="user-details-header">
+                    <div class="user-details-avatar" id="userAvatar">U</div>
+                    <div class="user-details-info">
+                        <h4 id="selectedUserName">Select a user</h4>
+                        <p id="selectedUserRole">-</p>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <label>User ID</label>
+                    <div class="value" id="detailUserId">-</div>
+                </div>
+
+                <div class="detail-item">
+                    <label>Email</label>
+                    <div class="value" id="detailUserEmail">-</div>
+                </div>
+
+                <div class="detail-item">
+                    <label>Account Created</label>
+                    <div class="value" id="detailUserCreated">-</div>
+                </div>
+
+                <div class="detail-item">
+                    <label>Status</label>
+                    <div class="value" id="detailUserStatus">-</div>
+                </div>
+
+                <div class="detail-item">
+                    <label>Total Orders</label>
+                    <div class="value" id="detailUserOrders">-</div>
+                </div>
+
+                <button class="nav-btn logout" style="width: 100%; margin-top: 20px;">
+                    <i class="fas fa-user-cog"></i> Manage User
+                </button>
+            </aside>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="~/Scripts/Admin.js"></script>
+</body>
+</html>

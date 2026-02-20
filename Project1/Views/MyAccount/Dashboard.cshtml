@@ -1,0 +1,250 @@
+﻿@{
+    ViewBag.Title = "My Account - FoodExpress";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>My Account - FoodExpress</title>
+
+    <!-- CSS -->
+    <link href="~/css/MyAccount.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        /* Additional styles for cart link */
+        .view-cart-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+            .view-cart-link:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+                color: white;
+            }
+
+            .view-cart-link i {
+                margin-right: 8px;
+            }
+    </style>
+</head>
+<body>
+    
+    @{
+    ViewBag.Title = "My Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="dashboard-container">
+        <!-- Header -->
+     
+
+        <!-- Main Content -->
+        <div class="dashboard-main">
+            <!-- Sidebar -->
+            <aside class="dashboard-sidebar">
+                <div class="user-profile">
+                    <div class="profile-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 id="userName">Loading...</h3>
+                    <p id="userEmail">Loading...</p>
+                    <div class="role-badge" id="roleBadge">
+                        <span id="userRole">Loading...</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li class="active" data-section="myDetails">
+                            <a href="#"><i class="fas fa-user"></i> My Details</a>
+                        </li>
+                        <li data-section="myOrders">
+                            <a href="#"><i class="fas fa-clipboard-list"></i> My Orders</a>
+                        </li>
+                        <li data-section="support">
+                            <a href="#"><i class="fas fa-headset"></i> Customer Support</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="logout-section">
+                    <button id="btnLogout" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="dashboard-content">
+                <!-- My Details Section (Active by default) -->
+                <section id="myDetails" class="content-section active">
+                    <h2><i class="fas fa-user"></i> My Details</h2>
+                    <div class="details-card">
+                        <div class="detail-item">
+                            <span class="detail-label">Full Name:</span>
+                            <span class="detail-value" id="uname">Loading...</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Email Address:</span>
+                            <span class="detail-value" id="uemail">Loading...</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Account Type:</span>
+                            <span class="detail-value" id="urole">Loading...</span>
+                        </div>
+                       
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                        <div class="action-buttons">
+                            <a href="/Food/Cart" class="action-btn">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>View Cart</span>
+                            </a>
+                            <a href="/" class="action-btn">
+                                <i class="fas fa-utensils"></i>
+                                <span>Browse Menu</span>
+                            </a>
+                           
+                        </div>
+                    </div>
+                </section>
+
+                <!-- My Orders Section -->
+                <section id="myOrders" class="content-section">
+                    <h2><i class="fas fa-clipboard-list"></i> My Orders</h2>
+                    <div class="coming-soon">
+                        <div class="coming-soon-icon">
+                            <i class="fas fa-clipboard-list fa-4x"></i>
+                        </div>
+                        <h3>Order History Coming Soon!</h3>
+                        <p>Track all your past and current orders in one place.</p>
+                        <p>View order details, track deliveries, and reorder your favorites.</p>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="progress-text">45% Complete</span>
+                        </div>
+                        <a href="/Food" class="view-cart-link">
+                            <i class="fas fa-shopping-bag"></i> Browse Food Items
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Customer Support Section -->
+                <section id="support" class="content-section">
+                    <h2><i class="fas fa-headset"></i> Customer Support</h2>
+                    <div class="support-cards">
+                        <div class="support-card">
+                            <div class="support-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3>Call Us</h3>
+                            <p>24/7 Customer Support</p>
+                            <p class="support-info">+1 (800) 123-4567</p>
+                        </div>
+                        <div class="support-card">
+                            <div class="support-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Email Us</h3>
+                            <p>Response within 24 hours</p>
+                            <p class="support-info">support@foodexpress.com</p>
+                        </div>
+                        <div class="support-card">
+                            <div class="support-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Live Chat</h3>
+                            <p>Available 9AM - 9PM</p>
+                            <p class="support-info">Click to Start Chat</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How do I change my password?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Password reset feature will be available soon.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Can I update my delivery address?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Address management will be available in the next update.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>What payment methods are accepted?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>We currently accept credit/debit cards. More payment options coming soon.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>How do I track my order?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Order tracking will be available once the order feature is complete.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form id="supportForm">
+                            <div class="form-group">
+                                <label for="supportSubject">Subject</label>
+                                <input type="text" id="supportSubject" placeholder="Enter subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="supportMessage">Message</label>
+                                <textarea id="supportMessage" rows="5" placeholder="Describe your issue or question..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="~/Scripts/MyAccount.js"></script>
+</body>
+</html>

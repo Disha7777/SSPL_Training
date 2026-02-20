@@ -1,0 +1,217 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+.register-box {
+    background: white;
+    padding: 40px 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(255, 107, 53, 0.15);
+    width: 100%;
+    max-width: 450px;
+    animation: slideIn 0.5s ease-out;
+    border: 1px solid #ffedd5;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 {
+    color: #ff6b35;
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #ff6b35, #ffa726);
+    border-radius: 2px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff6b35;
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 16px 16px 45px;
+    border: 2px solid #ffe5d3;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #fffaf5;
+    color: #333;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #ff6b35;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.15);
+}
+
+.input-group input::placeholder {
+    color: #ffb088;
+    font-weight: 400;
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+    min-height: 20px;
+    text-align: left;
+    padding-left: 5px;
+}
+
+#btnRegister {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #ff6b35 0%, #ffa726 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+#btnRegister:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+#btnRegister:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 107, 53, 0.35);
+}
+
+#btnRegister:hover:not(:disabled):before {
+    left: 100%;
+}
+
+#btnRegister:active:not(:disabled) {
+    transform: translateY(-1px);
+}
+
+#btnRegister:disabled {
+    background: #ffd5c2;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.login-link {
+    margin-top: 25px;
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+    padding-top: 20px;
+    border-top: 1px solid #ffedd5;
+}
+
+.login-link a {
+    color: #ff6b35;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+}
+
+/* FoodExpress logo/brand styling */
+.brand {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.brand span {
+    color: #ff6b35;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .register-box {
+        padding: 30px 25px;
+        margin: 0 15px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    .input-group input {
+        padding: 14px 14px 14px 45px;
+    }
+    
+    #btnRegister {
+        padding: 15px;
+        font-size: 16px;
+    }
+}
