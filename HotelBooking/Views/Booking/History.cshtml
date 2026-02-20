@@ -1,0 +1,33 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h4 class="mb-3">My Bookings</h4>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Room</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Price / Day</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (System.Data.DataRow row in Model.Rows)
+            {
+                <tr>
+                    <td>@row["RoomType"] (@row["RoomNumber"])</td>
+                    <td>@Convert.ToDateTime(row["CheckInDate"]).ToString("dd-MMM-yyyy")</td>
+                    <td>@Convert.ToDateTime(row["CheckOutDate"]).ToString("dd-MMM-yyyy")</td>
+                    <td>₹ @row["Price"]</td>
+                    <td><strong>₹ @row["TotalAmount"]</strong></td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

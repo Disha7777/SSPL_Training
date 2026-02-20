@@ -1,0 +1,175 @@
+﻿/* =========================
+   GLOBAL STYLES
+========================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.nav-link {
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   LOGIN & REGISTER BOX
+========================= */
+.login-box,
+.register-box {
+    width: 350px;
+    background: #ffffff;
+    padding: 30px;
+    margin: 80px auto;
+    border-radius: 8px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.login-box h2,
+.register-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.login-box input,
+.register-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.login-box input:focus,
+.register-box input:focus {
+    outline: none;
+    border-color: #0d6efd;
+}
+
+.login-box button,
+.register-box button {
+    width: 100%;
+    padding: 10px;
+    background: #0d6efd;
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-box button:hover,
+.register-box button:hover {
+    background: #0b5ed7;
+}
+
+/* Login/Register link */
+.login-link {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #0d6efd;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   BOOKING PAGE
+========================= */
+.container h3 {
+    font-weight: 600;
+}
+
+select.form-control,
+input.form-control {
+    height: 42px;
+}
+
+button.btn-primary {
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* =========================
+   TABLE (BOOKING HISTORY)
+========================= */
+.table {
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.table th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* =========================
+   ADMIN DASHBOARD CARDS
+========================= */
+.card {
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card h5 {
+    font-weight: 600;
+}
+
+.card h2 {
+    margin-top: 10px;
+    font-size: 32px;
+}
+
+/* =========================
+   SWEETALERT FIX
+========================= */
+.swal2-popup {
+    font-size: 14px !important;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .login-box,
+    .register-box {
+        width: 90%;
+        margin-top: 50px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+}

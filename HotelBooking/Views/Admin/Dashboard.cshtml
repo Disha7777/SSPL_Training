@@ -1,0 +1,115 @@
+﻿@model System.Data.DataSet
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- ================= SIDEBAR ================= -->
+        <div class="col-md-3 bg-dark text-white min-vh-100 p-3">
+
+            <h4 class="text-center mb-4">Hotel Panel</h4>
+
+            <ul class="nav flex-column mb-4">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/Dashboard/MyProfile">My Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/Booking/Preferences">Book Room</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/Booking/MyBookings">My Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="/Account/Logout">Logout</a>
+                </li>
+            </ul>
+
+            <hr class="bg-light" />
+
+            <h5>Filters</h5>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filterAC">
+                <label class="form-check-label">AC</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filterBreakfast">
+                <label class="form-check-label">Breakfast</label>
+            </div>
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filterLunch">
+                <label class="form-check-label">Lunch</label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="filterPet">
+                <label class="form-check-label">Pet Allowed</label>
+            </div>
+
+            <select class="form-select" id="filterRoomType">
+                <option value="">All Room Types</option>
+                <option value="Single">Single</option>
+                <option value="Double">Double</option>
+                <option value="Deluxe">Deluxe</option>
+            </select>
+        </div>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <div class="col-md-9 p-4">
+
+            <h3 class="mb-4">Admin Dashboard</h3>
+
+            <div class="row">
+
+                <!-- Total Users -->
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white mb-3 text-center">
+                        <div class="card-body">
+                            <h5>Total Users</h5>
+                            <h2>
+                                @(Model.Tables.Count > 1 ? Model.Tables[1].Rows[0]["TotalUsers"] : "0")
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Bookings -->
+                <div class="col-md-4">
+                    <div class="card bg-success text-white mb-3 text-center">
+                        <div class="card-body">
+                            <h5>Total Bookings</h5>
+                            <h2>
+                                @(Model.Tables.Count > 0 ? Model.Tables[0].Rows[0]["TotalBookings"] : "0")
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Rooms -->
+                <div class="col-md-4">
+                    <div class="card bg-warning text-white mb-3 text-center">
+                        <div class="card-body">
+                            <h5>Available Rooms</h5>
+                            <h2>
+                                @(Model.Tables.Count > 2 ? Model.Tables[2].Rows[0]["AvailableRooms"] : "0")
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 🔽 Room list will load here via filter -->
+            <div id="roomList" class="mt-4"></div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/admin.js"></script>
+
+

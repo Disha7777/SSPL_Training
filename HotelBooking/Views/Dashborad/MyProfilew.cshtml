@@ -1,0 +1,8 @@
+﻿@model System.Data.DataTable
+
+<h2>My Profile</h2>
+
+<p><strong>Name:</strong> @Model.Rows[0]["FullName"]</p>
+<p><strong>Email:</strong> @Model.Rows[0]["Email"]</p>
+<p><strong>Stay Type:</strong> @Model.Rows[0]["StayType"]</p>
+<p><strong>Pet:</strong> @(Convert.ToBoolean(Model.Rows[0]["HasPet"]) ? "Yes" : "No")</p>

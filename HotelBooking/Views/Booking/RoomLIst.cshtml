@@ -1,0 +1,12 @@
+﻿@model System.Data.DataTable
+
+<table class="table table-bordered">
+    @foreach (System.Data.DataRow r in Model.Rows)
+    {
+        <tr>
+            <td>@r["RoomNumber"]</td>
+            <td>@r["RoomType"]</td>
+            <td>₹@r["Price"]</td>
+        </tr>
+    }
+</table>

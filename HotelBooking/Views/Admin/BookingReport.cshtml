@@ -1,0 +1,51 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Booking Report</h3>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>User Name</th>
+            <th>Room</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+            <th>Total Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.Rows)
+        {
+            // Precompute row values
+            string bookingId = row["BookingId"].ToString();        // ✅ change
+            string fullName = row["FullName"].ToString();          // ✅ change
+            string roomType = row["RoomType"].ToString();          // ✅ change
+            string checkIn = Convert.ToDateTime(row["CheckIn"]).ToString("yyyy-MM-dd");  // ✅ change
+            string checkOut = Convert.ToDateTime(row["CheckOut"]).ToString("yyyy-MM-dd"); // ✅ change
+            string totalPrice = row["TotalPrice"].ToString();      // ✅ change
+
+            <text>  <!-- ✅ wrap HTML inside <text> -->
+                <tr>
+                    <td>@bookingId</td>
+                    <td>@fullName</td>
+                    <td>@roomType</td>
+                    <td>@checkIn</td>
+                    <td>@checkOut</td>
+                    <td>@totalPrice</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger btn-delete-booking" data-id="@bookingId">
+                            <!-- ✅ change -->
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </text>
+        }
+    </tbody>
+</table>
+
+<script src="~/Scripts/admin.js"></script>

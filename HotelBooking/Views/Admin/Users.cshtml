@@ -1,0 +1,56 @@
+﻿@model System.Data.DataTable
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Manage Users</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Active</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (System.Data.DataRow row in Model.Rows)
+        {
+        // ✅ Razor-safe variable declarations
+        string userSelected = row["Role"].ToString() == "User" ? "selected='selected'" : "";
+        string adminSelected = row["Role"].ToString() == "Admin" ? "selected='selected'" : "";
+        bool isActive = Convert.ToBoolean(row["IsActive"]);
+
+        <text>
+            <tr>
+                <td>@row["FullName"]</td>
+                <td>@row["Email"]</td>
+
+                <td>
+                    <select class="form-control role">
+                        <option value="User" @userSelected>User</option>
+                        <option value="Admin" @adminSelected>Admin</option>
+                    </select>
+                </td>
+
+                <td class="text-center">
+                    <!-- ✅ SINGLE-LINE ternary (VERY IMPORTANT) -->
+                    <input type="checkbox" class="isActive" @(isActive ? "checked='checked'" : "" ) />
+                </td>
+
+                <td>
+                
+                    <button class="btn btn-sm btn-primary save"
+                            data-id="@row["UserId"]">
+                        Save
+                    </button>
+                </td>
+            </tr>
+        </text>
+        }
+    </tbody>
+</table>
+
+<script src="~/Scripts/admin.js"></script>

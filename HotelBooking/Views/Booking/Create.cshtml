@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4 col-md-6">
+
+    <label>Check In</label>
+    <input type="date" id="checkIn" class="form-control"
+           min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+
+    <label class="mt-2">Check Out</label>
+    <input type="date" id="checkOut" class="form-control" />
+
+    <!-- Filters -->
+    <div class="mt-3 border p-2 rounded">
+        <label><input type="checkbox" id="filterAC" /> AC Room</label><br />
+        <label><input type="checkbox" id="filterFood" /> Breakfast Included</label>
+    </div>
+
+    <!-- Room select -->
+    <div id="roomDiv" class="mt-3" style="display:none;">
+        <label>Select Room Type</label>
+        <select id="roomId" class="form-control"></select>
+    </div>
+
+    <input id="price" class="form-control mt-3" readonly style="display:none;" />
+
+    <!-- IMAGE SLIDER -->
+    <div id="imageSlider" class="carousel slide mt-3" data-bs-ride="carousel" style="display:none;">
+        <div class="carousel-inner" id="sliderImages"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imageSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <button id="btnBook" class="btn btn-primary w-100 mt-3">Book Now</button>
+</div>
+<small class="text-muted">
+    🔒 Already booked dates will be disabled automatically
+</small>
+
+
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<script src="~/Scripts/booking.js"></script>
