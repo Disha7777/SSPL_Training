@@ -1,0 +1,54 @@
+1. hey , this is my  assesment task 
+� Assignment Option 1 — Product Management 
+Dashboard 
+Features 
+• Login page (UI + validation) 
+• Dashboard layout (header, sidebar, content, footer) 
+• Products loaded from API 
+• Product cards (Grid) 
+• Search with debounce 
+• Product details modal 
+• Add product form (jQuery AJAX) 
+API 
+https://fakestoreapi.com/products
+
+
+HTML • CSS • JavaScript • jQuery • AJAX • UI/UX 
+
+ Objective 
+Trainees must build a real, responsive web application UI using: 
+• Semantic HTML 
+• Modern CSS (Flexbox, Grid, responsive, variables, BEM) 
+• JavaScript (DOM, events, debounce, async/await) 
+• jQuery (DOM + AJAX) 
+• Fetch API / AJAX 
+• Strong UI/UX practices 
+Mandatory: 
+They must use AI (ChatGPT or similar) to design, write, improve, and debug code. 
+They must submit the AI prompts used. 
+�
+� Common UI/UX Requirements (For ALL Assignments) 
+Must include: 
+• Semantic HTML structure 
+• CSS Grid for layout 
+• Flexbox for components 
+• Mobile-first responsive design 
+• CSS variables 
+• BEM naming convention 
+• Hover effects using transform 
+• Smooth transitions 
+• Modal popup (CSS + JS) 
+• Search with debounce 
+• Fetch API for data 
+• jQuery AJAX POST for form 
+• Accessible form labels 
+• Clean spacing, alignment, professional UI
+
+2. Add button is not working
+
+3. Giving error in JavaScript Check the given Code and provide a working code
+
+4.Provide me a Sweetalert script and also explain how it works
+
+5. It should fade after click provide me a timefade of it.
+

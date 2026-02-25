@@ -1,0 +1,87 @@
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #333;
+    --primary: #2563eb;
+  }
+  
+  body.dark {
+    --bg: #1e1e1e;
+    --card: #2a2a2a;
+    --text: #f1f1f1;
+  }
+  
+  body {
+    background: var(--bg);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    color: var(--text);
+  }
+  
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 30px auto;
+    background: var(--card);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  input, select, button {
+    padding: 8px;
+  }
+  
+  #taskList li {
+    list-style: none;
+    padding: 10px;
+    background: var(--bg);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    cursor: grab;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content {
+    background: #fff;
+    width: 300px;
+    padding: 20px;
+    margin: 15% auto;
+    border-radius: 8px;
+  }
+  
+  .close {
+    float: right;
+    cursor: pointer;
+  }
+  
+  #loader {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+  }
+  

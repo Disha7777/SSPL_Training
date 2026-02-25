@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Management System</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+/* ================= THEME VARIABLES ================= */
+:root {
+  --primary: #7C3AED;
+  --accent: #22D3EE;
+  --dark: #020617;
+  --glass: rgba(255,255,255,0.12);
+  --border: rgba(255,255,255,0.25);
+  --radius: 16px;
+}
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #020617, #1E1B4B);
+  color: white;
+  line-height: 1.5;
+  overflow: auto;
+}
+
+/* ================= LOGIN PAGE ================= */
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__box {
+  width: 360px;
+  padding: 35px;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  animation: enter 0.8s ease forwards;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.login__title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.login__subtitle {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.login__demo {
+  background: rgba(124,58,237,0.2);
+  border-left: 4px solid var(--primary);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* floating input */
+.field {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.field input {
+  width: 100%;
+  padding: 18px 14px 10px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+.field label {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  font-size: 14px;
+  opacity: 0.7;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: -8px;
+  background: #020617;
+  padding: 0 6px;
+  font-size: 12px;
+  opacity: 1;
+}
+
+/* login button */
+.login__btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  border-radius: var(--radius);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(124,58,237,0.6);
+}
+
+.login__error {
+  text-align: center;
+  margin-top: 10px;
+  color: #FCA5A5;
+}
+
+/* ================= DASHBOARD ================= */
+.app {
+  display: none;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 70px 1fr 50px;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+/* header */
+header {
+  grid-area: header;
+  background: rgba(2,6,23,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  font-weight: bold;
+}
+
+/* sidebar */
+aside {
+  grid-area: sidebar;
+  padding: 20px;
+  background: rgba(255,255,255,0.05);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar__title {
+  margin-bottom: 15px;
+}
+
+/* main */
+main {
+  grid-area: main;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+/* footer */
+footer {
+  grid-area: footer;
+  background: rgba(2,6,23,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+
+/* inputs */
+.form__input,
+.search__input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: white;
+  font-size: 14px;
+}
+
+.form__button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  border-radius: var(--radius);
+  color: white;
+  cursor: pointer;
+}
+
+/* products */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card__image {
+  height: 140px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.card h4 {
+  font-size: 14px;
+  margin: 10px 0;
+  line-height: 1.4;
+  height: 40px;
+  overflow: hidden;
+}
+
+.card__price {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2,6,23,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal__content {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: var(--radius);
+  width: 400px;
+  text-align: center;
+}
+
+.modal__content h3 {
+  margin-bottom: 10px;
+}
+
+.modal__content p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: var(--accent);
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<section class="login" id="loginPage">
+  <div class="login__box">
+    <h2 class="login__title">Welcome Back</h2>
+    <p class="login__subtitle">Sign in to your dashboard</p>
+
+    <div class="login__demo">
+      <strong>Demo Login</strong><br>
+      ID: admin<br>
+      Password: admin123
+    </div>
+
+    <div class="field">
+      <input id="loginUser" placeholder=" " />
+      <label>Username</label>
+    </div>
+
+    <div class="field">
+      <input id="loginPass" type="password" placeholder=" " />
+      <label>Password</label>
+    </div>
+
+    <button class="login__btn" id="loginBtn">Login</button>
+    <div class="login__error" id="loginError"></div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<div class="app" id="dashboard">
+<header>
+  <div>🚀 Product Dashboard</div>
+  <div>Admin</div>
+</header>
+
+<aside>
+  <h3 class="sidebar__title">Add Product</h3>
+  <input class="form__input" id="title" placeholder="Title">
+  <input class="form__input" id="price" placeholder="Price">
+  <input class="form__input" id="image" placeholder="Image URL">
+  <button class="form__button" id="addProduct">Add Product</button>
+</aside>
+
+<main>
+  <input class="search__input" id="search" placeholder="Search products...">
+  <section class="products" id="productGrid"></section>
+</main>
+
+<footer>© 2026 Product System</footer>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal__content">
+    <h3 id="modalTitle"></h3>
+    <img id="modalImage" width="100%">
+    <p id="modalPrice"></p>
+    <button class="form__button" onclick="$('#modal').hide()">Close</button>
+  </div>
+</div>
+
+<script>
+const DEFAULT_USER = "admin";
+const DEFAULT_PASS = "admin123";
+
+$('#loginBtn').click(() => {
+  if ($('#loginUser').val() === DEFAULT_USER && $('#loginPass').val() === DEFAULT_PASS) {
+    $('#loginPage').fadeOut(500, () => {
+      $('#dashboard').fadeIn(500);
+      loadProducts();
+    });
+  } else {
+    $('#loginError').text('Invalid credentials');
+  }
+});
+
+let products = [];
+let debounceTimer;
+
+async function loadProducts() {
+  const res = await fetch('https://fakestoreapi.com/products');
+  products = await res.json();
+  render(products);
+}
+
+function render(list) {
+  $('#productGrid').empty();
+  list.forEach(p => {
+    $('#productGrid').append(`
+      <article class="card" onclick="openModal(${p.id})">
+        <img class="card__image" src="${p.image}">
+        <h4>${p.title}</h4>
+        <div class="card__price">$${p.price}</div>
+      </article>
+    `);
+  });
+}
+
+$('#search').on('input', function () {
+  clearTimeout(debounceTimer);
+  const value = this.value.toLowerCase();
+  debounceTimer = setTimeout(() => {
+    render(products.filter(p => p.title.toLowerCase().includes(value)));
+  }, 300);
+});
+
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  $('#modalTitle').text(p.title);
+  $('#modalImage').attr('src', p.image);
+  $('#modalPrice').text('$' + p.price);
+  $('#modal').fadeIn(300);
+}
+
+$('#addProduct').click(() => {
+  $.ajax({
+    url: 'https://fakestoreapi.com/products',
+    method: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      title: $('#title').val(),
+      price: $('#price').val(),
+      image: $('#image').val()
+    }),
+    success: res => {
+      products.unshift(res);
+      render(products);
+      alert('Product added successfully!');
+    }
+  });
+});
+</script>
+
+</body>
+</html>

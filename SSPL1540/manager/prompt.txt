@@ -1,0 +1,62 @@
+1. Provide me a Project Name TO-Do Manager
+Using HTML,JQuery,Json,CSS
+Features to be added into it
+Semantic HTML
+• Modern CSS (Flexbox, Grid, responsive, variables, BEM)
+• JavaScript (DOM, events, debounce, async/await)
+• jQuery (DOM + AJAX)
+• Fetch API / AJAX
+• Strong UI/UX practices
+Must include:
+• Semantic HTML structure
+• CSS Grid for layout
+• Flexbox for components
+• Mobile-first responsive design
+• CSS variables
+• BEM naming convention
+• Hover effects using transform
+• Smooth transitions
+• Modal popup (CSS + JS)
+• Search with debounce
+• Fetch API for data
+• jQuery AJAX POST for form
+• Accessible form labels
+• Clean spacing, alignment, professional UI
+Submission Structure
+/project
+ index.html
+ style.css
+ script.js
+ prompts.txt
+✅Evaluation Criteria
+Criteria Marks
+Semantic HTML 10
+Responsive CSS (Grid/Flexbox) 20
+JavaScript DOM & Events 15
+Debounce Implementation 10
+Fetch API Integration 15
+jQuery AJAX POST 10
+Modal & UI interactions 10
+UI/UX Quality 10
+🏁Expected Outcome
+A working, responsive web app that:
+• Loads data from API
+• Allows searching
+• Uses modal popup
+• Submits form via AJAX
+• Demonstrates clean, professional UI
+💡Bonus (Optional)
+• Dark/Light theme toggle (CSS variables)
+• Loader animation while fetching
+• Pagination
+• localStorage usage
+
+2. Change in UI and make a look of Proffesional.
+
+3. Change in given below code in js.
+
+4. While adding in Task the category should drag and drop.
+
+5. drag and drop is not working provide me a code.
+
+6. Share a code with changes in it.

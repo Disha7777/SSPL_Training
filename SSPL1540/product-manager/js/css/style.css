@@ -1,0 +1,115 @@
+:root {
+    --primary: #2563eb;
+    --bg: #f4f6f9;
+    --card: #ffffff;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* LOGIN */
+  .login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login__form {
+    background: var(--card);
+    padding: 2rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .login__form button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.6rem;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.75rem;
+  }
+  
+  /* DASHBOARD LAYOUT */
+  .dashboard {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+  
+  .header {
+    grid-column: span 2;
+    background: var(--card);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sidebar {
+    background: #111;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+  
+  .footer {
+    grid-column: span 2;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* PRODUCT GRID */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .product {
+    background: var(--card);
+    padding: 1rem;
+    cursor: pointer;
+  }
+  
+  /* MODAL */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal__content {
+    background: #fff;
+    padding: 1.5rem;
+    width: 300px;
+  }
+  
+  .close {
+    float: right;
+    cursor: pointer;
+  }
+  
