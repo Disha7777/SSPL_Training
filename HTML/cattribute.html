@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Custom Attribute Element</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                alert($('#my_id').data('original-title'))
+            });
+        </script>
+    </head>
+    <body>
+        The <abbr title="United Nations">UN</abbr> was established in 1945.
+        <strong id="my_id" data-original-title="Hello">Demo</strong>
+
+        <!--Address-->
+
+        <address>
+            Written by <a href="dishasanghavi7777@gmail.com">Disha</a>.<br>
+            Visit us at:<br>
+            xyz.com<br>
+            Ahemdabad, Gujarat<br>
+            India
+        </address>
+
+        <!--Article-->
+
+        <article>
+            <h2>Google Chrome</h2>
+            <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's most popular web browser today!</p>
+        </article>
+
+        <!--Aside-->
+        <aside>
+            <h4>Epcot Center</h4>
+            <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+        </aside>
+
+        <!--Audio-->
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </body>
+</html>
